@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nf start",
     "start": "babel-node src/server.js --colors",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "postinstall": "webpack -p"
   },
   "license": "ISC",
   "dependencies": {
