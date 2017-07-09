@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Cell from './Cell'
+import Grid from './Grid'
 
 class App extends Component {
   render() {
     return <div>
-      <Cell />
+      <Grid rows={5} columns={5} />
     </div>;
   }
 }
