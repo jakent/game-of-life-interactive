@@ -11,10 +11,17 @@
   },
   "license": "ISC",
   "dependencies": {
+    "css-loader": "^0.28.4",
+    "enzyme": "^2.9.1",
     "express": "^4.15.3",
     "foreman": "^2.0.0",
+    "jest": "^20.0.4",
+    "node-sass": "^4.5.3",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -25,5 +32,12 @@
     "babel-preset-stage-2": "^6.22.0",
     "webpack": "^3.1.0",
     "yarn": "^0.27.5"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|scss)$": "<rootDir>/src/__mocks__/styleMock.js",
+      "\\.(jpg|jpeg|png|gif)$": "<rootDir>/src/__mocks__/fileMock.js"
+    },
+    "verbose": true
   }
 }
