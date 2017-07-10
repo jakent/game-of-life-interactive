@@ -1,12 +1,21 @@
 import React, {Component} from 'react';
-import Grid from './Grid'
+import {connect} from 'react-redux';
+import Game from './Game'
 
 class App extends Component {
   render() {
+    const {cells} = this.props;
+
     return <div>
-      <Grid rows={5} columns={5} />
+      <Game cells={cells} />
     </div>;
   }
 }
 
-export default App;
+const mapStateToProps = (store) => {
+  return {
+    cells: store.cells
+  }
+};
+
+export default connect(mapStateToProps)(App);

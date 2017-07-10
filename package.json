@@ -7,6 +7,7 @@
     "dev": "nf start",
     "start": "babel-node src/server.js --colors",
     "build": "webpack -p",
+    "test": "jest",
     "postinstall": "webpack -p"
   },
   "license": "ISC",
@@ -19,8 +20,11 @@
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
     "react-test-renderer": "^15.6.1",
+    "redux": "^3.7.1",
     "sass-loader": "^6.0.6",
+    "sinon": "^2.3.7",
     "style-loader": "^0.18.2"
   },
   "devDependencies": {

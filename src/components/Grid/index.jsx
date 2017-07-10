@@ -3,13 +3,13 @@ import Cell from '../Cell'
 
 class Grid extends Component {
   render() {
-    const {rows, columns} = this.props;
+    const {cells} = this.props;
 
-    return <div>
-      {[...Array(rows).keys()].map((i, rowNumber) =>
-        <div key={rowNumber}>
-          {[...Array(columns).keys()].map((i, columnNumber) =>
-            <Cell key={`row${rowNumber}-column${columnNumber}`}/>
+    return <div id="grid">
+      {cells.map((row, x) =>
+        <div key={x}>
+          {row.map((status, y) =>
+            <Cell key={`row${x}-column${y}`} alive={status} position={{x: x, y: y}} />
           )}
         </div>
       )}
