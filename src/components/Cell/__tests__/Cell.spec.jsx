@@ -19,7 +19,7 @@ describe('<Cell />', () => {
     expect(cell.hasClass('dead')).toBeFalsy();
   });
 
-  xit('should change from DEAD to ALIVE on click', () => {
+  it('should change from DEAD to ALIVE on click', () => {
     const spy = sinon.spy(store, 'changeCellState');
     const cell = shallow(<Cell alive={false} position={{x: 0, y: 0}}/>);
     cell.simulate('click');

@@ -6,10 +6,13 @@ class Grid extends Component {
     const {cells} = this.props;
 
     return <div id="grid">
-      {cells.map((row, x) =>
-        <div key={x}>
-          {row.map((status, y) =>
-            <Cell key={`row${x}-column${y}`} alive={status} position={{x: x, y: y}} />
+      {cells.map((row, y) =>
+        <div className={`y${y}`} key={y}>
+          {row.map((cell, x) =>
+            <Cell key={`x${x}-y${y}`}
+                  alive={cell.alive}
+                  position={cell.position}
+            />
           )}
         </div>
       )}
