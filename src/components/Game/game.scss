@@ -1,6 +1,17 @@
 
-.start {
+.next {
   background-color: palevioletred;
+  color: white;
+  border: 0;
+  display: inline-block;
+  vertical-align: top;
+  margin: 2px;
+  height: 30px;
+  width: 30px;
+}
+
+.start, .stop {
+  background-color: lavender;
   color: white;
   border: 0;
   display: inline-block;
