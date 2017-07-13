@@ -14,7 +14,7 @@ const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'CHANGE_CELL_STATE':
       const position = action.data.position;
-
+//ask grid to update
       const newCells = state.grid.cells.slice();
       newCells[position.y][position.x] = new Cell(action.data.alive, {x: position.x, y: position.y});
 

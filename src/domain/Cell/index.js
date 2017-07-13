@@ -8,7 +8,7 @@ export default class Cell {
   transform(aliveNeighbors) {
     let survive = this.alive;
     if (aliveNeighbors === 3) survive = true;
-    else if (aliveNeighbors === 4) survive = false;
+    else if (aliveNeighbors >= 4) survive = false;
     else if (aliveNeighbors <= 1) survive = false;
 
     return new Cell(survive, this.position)

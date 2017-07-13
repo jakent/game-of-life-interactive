@@ -19,7 +19,7 @@ export class Game extends Component {
   start() {
     this.setState({running: true});
     this.props.startGeneration();
-    this.interval = setInterval(this.props.startGeneration, 200);
+    this.interval = setInterval(this.props.startGeneration, 50);
   }
 
   stop() {
@@ -34,6 +34,7 @@ export class Game extends Component {
       <div className="controls">
         {!this.state.running && <button className="start" onClick={() => this.start()}/>}
         {this.state.running && <button className="stop" onClick={() => this.stop()}/>}
+        {/*<input type="range" min="1" max="2000" step ="50" value ="200" onChange={(event) => console.log('adf', event)} />*/}
       </div>
       <Grid cells={grid.cells}/>
     </section>;

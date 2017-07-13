@@ -1,5 +1,9 @@
 @import '../_mixins.scss';
 
+body {
+  background-color: black;
+}
+
 .controls {
   height: $cell-height + ($cell-margin--height * 2);
 

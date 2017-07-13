@@ -18,6 +18,7 @@ describe('Cell', () => {
 
   it('switch from being ALIVE to DEAD if its surrounded by more than 3 living cells because of over population', () => {
     expect(new Cell(true).transform(4).alive).toBe(false);
+    expect(new Cell(true).transform(5).alive).toBe(false);
   });
 
   it('switch from being ALIVE to DEAD if its surrounded by less than 2 cells because of under population', () => {

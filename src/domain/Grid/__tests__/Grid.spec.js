@@ -26,4 +26,15 @@ describe('Grid', () => {
     ]));
   });
 
+  it('kill all but corners', () => {
+    let one = new Grid([
+      [new Cell(true, {x: 0, y: 0}), new Cell(true, {x: 1, y: 0}), new Cell(true, {x: 2, y: 0})],
+      [new Cell(true, {x: 0, y: 1}), new Cell(true, {x: 1, y: 1}), new Cell(true, {x: 2, y: 1})]
+    ]);
+    expect(one.nextGeneration()).toEqual(new Grid([
+      [new Cell(true, {x: 0, y: 0}), new Cell(false, {x: 1, y: 0}), new Cell(true, {x: 2, y: 0})],
+      [new Cell(true, {x: 0, y: 1}), new Cell(false, {x: 1, y: 1}), new Cell(true, {x: 2, y: 1})]
+    ]));
+  });
+
 });
