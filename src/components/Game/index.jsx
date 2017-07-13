@@ -5,7 +5,7 @@ import {nextGeneration, startGeneration} from '../../store'
 
 import './game.scss'
 
-class Game extends Component {
+export class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {running: false};
@@ -17,26 +17,31 @@ class Game extends Component {
   }
 
   start() {
+    this.setState({running: true});
     this.props.startGeneration();
     this.interval = setInterval(this.props.startGeneration, 500);
   }
 
   stop() {
+    this.setState({running: false});
     clearInterval(this.interval);
   }
 
   render() {
-    const {cells} = this.props;
+    const {grid} = this.props;
 
     return <section>
-      <Grid cells={cells}/>
-      <button className="next" onClick={this.props.nextGeneration}/>
-      <button className="start" onClick={() => this.start()}/>
-      <button className="stop" onClick={() => this.stop()}/>
+      <Grid cells={grid.cells}/>
+      {!this.state.running && <button className="start" onClick={() => this.start()}/>}
+      {this.state.running && <button className="stop" onClick={() => this.stop()}/>}
     </section>;
   }
 }
 
-
+const mapStateToProps = (store) => {
+  return {
+    grid: store.grid
+  }
+};
 const mapDispatchToProps = {nextGeneration, startGeneration};
-export default connect(null, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

@@ -1,22 +1,20 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import {Provider} from 'react-redux';
-import {store} from '../../../store';
-import Game from '../';
+import {shallow} from 'enzyme';
+import {Game} from '../';
 import Cell from '../../../domain/Cell'
+import Grid from '../../../domain/Grid'
 
 describe('<Game />', () => {
 
   it('should initialize grid', () => {
+    const cells = [[new Cell(false, {x: 0, y:0}), new Cell(false, {x: 1, y:0})],
+                   [new Cell(false, {x: 0, y:1}), new Cell(false, {x: 1, y:1})]];
     const props = {
-      cells: [[new Cell(false, {x: 0, y:0}), new Cell(false, {x: 1, y:0})],
-              [new Cell(false, {x: 0, y:1}), new Cell(false, {x: 1, y:1})]]
+      grid: new Grid(cells)
     };
-    const game = mount(wrapWithProvider(<Game {...props} />));
+    const game = shallow(<Game {...props} />);
     expect(game.find('Grid').length).toBe(1);
-    expect(game.find('Grid').prop('cells')).toEqual(props.cells);
+    expect(game.find('Grid').prop('cells')).toEqual(cells);
   });
-
-  const wrapWithProvider = (component) => <Provider store={store}>{component}</Provider>
 
 });
