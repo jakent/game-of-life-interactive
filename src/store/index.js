@@ -2,9 +2,10 @@ import {createStore} from 'redux';
 import Cell from '../domain/Cell'
 import Grid from '../domain/Grid'
 
-export const changeCellState = (data) => ({type: 'CHANGE_CELL_STATE', data: data});
+export const changeCellState = (data) => ({type: 'CHANGE_CELL_STATE', data});
 export const nextGeneration = () => ({type: 'NEXT_GENERATION'});
 export const startGeneration = () => ({type: 'START_GENERATION'});
+export const reset = (data) => ({type: 'RESET', data});
 
 const defaultState = {
   grid: Grid.createEmpty(50, 50)
@@ -14,7 +15,7 @@ const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'CHANGE_CELL_STATE':
       const position = action.data.position;
-//ask grid to update
+      //ask grid to update
       const newCells = state.grid.cells.slice();
       newCells[position.y][position.x] = new Cell(action.data.alive, {x: position.x, y: position.y});
 
@@ -22,6 +23,8 @@ const reducer = (state = defaultState, action) => {
     case 'START_GENERATION':
     case 'NEXT_GENERATION':
       return Object.assign({}, state, { grid: state.grid.nextGeneration() });
+    case 'RESET':
+      return Object.assign({}, state, { grid: new Grid(action.data) });
     default:
       return state;
   }

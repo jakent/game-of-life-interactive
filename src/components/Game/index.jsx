@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Grid from '../Grid'
-import {nextGeneration, startGeneration} from '../../store'
+import {nextGeneration, startGeneration, reset} from '../../store'
 
 import './game.scss'
 
 export class Game extends Component {
   constructor(props) {
     super(props);
-    this.state = {running: false};
+    this.state = {running: false, savedCells: []};
   }
 
   componentWillUnmount() {
@@ -16,10 +16,18 @@ export class Game extends Component {
       this.stop();
   }
 
+  save() {
+    this.setState((prevState, props) => {
+      const newSavedCells = prevState.savedCells.slice();
+      newSavedCells.push(props.grid.cells);
+      return ({savedCells: newSavedCells});
+    });
+  }
+
   start() {
     this.setState({running: true});
     this.props.startGeneration();
-    this.interval = setInterval(this.props.startGeneration, 50);
+    this.interval = setInterval(this.props.startGeneration, 250);
   }
 
   stop() {
@@ -30,10 +38,14 @@ export class Game extends Component {
   render() {
     const {grid} = this.props;
 
+    console.log('this.state.savedCells', this.state.savedCells);
+
     return <section className="game">
       <div className="controls">
-        {!this.state.running && <button className="start" onClick={() => this.start()}/>}
-        {this.state.running && <button className="stop" onClick={() => this.stop()}/>}
+        {!this.state.running && <button className="control start" onClick={() => this.start()}/>}
+        {this.state.running && <button className="control stop" onClick={() => this.stop()}/>}
+        {this.state.savedCells.length === 0 && <button className="control save" onClick={() => this.save()}/>}
+        {this.state.savedCells.reverse().map((cells) => <button className="control reset" onClick={() => this.props.reset(cells)}/>)}
         {/*<input type="range" min="1" max="2000" step ="50" value ="200" onChange={(event) => console.log('adf', event)} />*/}
       </div>
       <Grid cells={grid.cells}/>
@@ -46,5 +58,5 @@ const mapStateToProps = (store) => {
     grid: store.grid
   }
 };
-const mapDispatchToProps = {nextGeneration, startGeneration};
+const mapDispatchToProps = {nextGeneration, startGeneration, reset};
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

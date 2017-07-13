@@ -7,8 +7,7 @@ body {
 .controls {
   height: $cell-height + ($cell-margin--height * 2);
 
-  .start {
-    background-color: palevioletred;
+  .control {
     color: white;
     border: 0;
     display: inline-block;
@@ -20,17 +19,20 @@ body {
     border: $cell-border;
   }
 
+  .start {
+    background-color: palevioletred;
+  }
+
   .stop {
     background-color: lavender;
-    color: white;
-    border: 0;
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 $cell-margin--width;
-    padding: $cell-padding;
-    height: $cell-height;
-    width: $cell-width;
-    border: $cell-border;
+  }
+
+  .save {
+    background-color: purple;
+  }
+
+  .reset {
+    background-color: mediumpurple;
   }
 }
 

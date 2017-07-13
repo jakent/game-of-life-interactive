@@ -2,8 +2,10 @@
 
 .row {
   white-space: nowrap;
-  height: $cell-height + ($cell-margin--height * 2);
-  &.parentClass {
-    margin: 0.1px;
-  }
+}
+
+.grid {
+  border-spacing: $cell-padding $cell-padding;
+  border-collapse: separate;
+  border-color: palevioletred;
 }

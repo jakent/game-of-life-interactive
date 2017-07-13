@@ -9,11 +9,11 @@ export class Cell extends Component {
   render() {
     const {alive, position, changeCellState} = this.props;
 
-    return <div
+    return <td
       className={`cell ${alive ? 'alive' : 'dead'}`}
       onClick={() => changeCellState({alive: !alive, position: position})}>
       {/*<p>{JSON.stringify(position)}</p>*/}
-    </div>;
+    </td>;
   }
 }
 

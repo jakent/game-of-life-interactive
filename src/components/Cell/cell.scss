@@ -1,13 +1,14 @@
 @import '../_mixins.scss';
 
 .cell {
-  margin-right: $cell-margin--width;
-  margin-left: $cell-margin--width;
+  margin: 0;
+  padding: 0;
   height: $cell-height;
+  max-height: $cell-height;
+  min-height: $cell-height;
   width: $cell-width;
-  padding: $cell-padding;
-  display: inline-block;
-  vertical-align: top;
+  min-width: $cell-width;
+  max-width: $cell-width;
   border: $cell-border;
 }
 
