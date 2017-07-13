@@ -7,7 +7,7 @@ export const nextGeneration = () => ({type: 'NEXT_GENERATION'});
 export const startGeneration = () => ({type: 'START_GENERATION'});
 
 const defaultState = {
-  grid: Grid.createEmpty(41, 19)
+  grid: Grid.createEmpty(50, 50)
 };
 
 const reducer = (state = defaultState, action) => {

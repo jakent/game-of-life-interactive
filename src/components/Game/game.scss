@@ -1,22 +1,36 @@
+@import '../_mixins.scss';
 
-.start {
-  background-color: palevioletred;
-  color: white;
-  border: 0;
-  display: inline-block;
-  vertical-align: top;
-  margin: 2px;
-  height: 30px;
-  width: 30px;
+.controls {
+  height: $cell-height + ($cell-margin--height * 2);
+
+  .start {
+    background-color: palevioletred;
+    color: white;
+    border: 0;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 $cell-margin--width;
+    padding: $cell-padding;
+    height: $cell-height;
+    width: $cell-width;
+    border: $cell-border;
+  }
+
+  .stop {
+    background-color: lavender;
+    color: white;
+    border: 0;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 $cell-margin--width;
+    padding: $cell-padding;
+    height: $cell-height;
+    width: $cell-width;
+    border: $cell-border;
+  }
 }
 
-.stop {
-  background-color: lavender;
-  color: white;
-  border: 0;
-  display: inline-block;
-  vertical-align: top;
-  margin: 2px;
-  height: 30px;
-  width: 30px;
+.game {
+  margin: 0;
+  padding: 0;
 }

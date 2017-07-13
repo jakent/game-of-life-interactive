@@ -1,8 +1,14 @@
+@import '../_mixins.scss';
+
 .cell {
-  height: 30px;
-  width: 30px;
-  margin: 2px;
+  margin-right: $cell-margin--width;
+  margin-left: $cell-margin--width;
+  height: $cell-height;
+  width: $cell-width;
+  padding: $cell-padding;
   display: inline-block;
+  vertical-align: top;
+  border: $cell-border;
 }
 
 .dead {
@@ -10,5 +16,5 @@
 }
 
 .alive {
-  background-color: blue;
+  background-color: black;
 }
