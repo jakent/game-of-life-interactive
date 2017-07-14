@@ -1,13 +1,15 @@
 import {createStore} from 'redux';
 import Grid from '../domain/Grid'
 
+import preset from './gosper-glider-gun.json'
+
 export const changeCellState = (data) => ({type: 'CHANGE_CELL_STATE', data});
 export const nextGeneration = () => ({type: 'NEXT_GENERATION'});
 export const startGeneration = () => ({type: 'START_GENERATION'});
 export const reset = (data) => ({type: 'RESET', data});
 
 const defaultState = {
-  grid: Grid.createEmpty(50, 50)
+  grid: Grid.from(preset)
 };
 
 const reducer = (state = defaultState, action) => {

@@ -1,5 +1,6 @@
 import Grid from '../';
 import Cell from '../../Cell'
+import testData from './test.json';
 
 describe('Grid', () => {
 
@@ -44,6 +45,34 @@ describe('Grid', () => {
       [new Cell(true, {x: 0, y: 0}), new Cell(false, {x: 1, y: 0})],
       [new Cell(false, {x: 0, y: 1}), new Cell(false, {x: 1, y: 1})]
     ]));
-  })
+  });
+
+  it('create a preset grid', () => {
+    let grid = Grid.from(testData);
+    expect(grid.cells[0][0].alive).toEqual(true);
+    expect(grid.cells[1][0].alive).toEqual(false);
+    expect(grid.cells[2][0].alive).toEqual(false);
+    expect(grid.cells[3][0].alive).toEqual(false);
+
+    expect(grid.cells[0][1].alive).toEqual(false);
+    expect(grid.cells[1][1].alive).toEqual(false);
+    expect(grid.cells[2][1].alive).toEqual(false);
+    expect(grid.cells[3][1].alive).toEqual(false);
+
+    expect(grid.cells[0][2].alive).toEqual(false);
+    expect(grid.cells[1][2].alive).toEqual(false);
+    expect(grid.cells[2][2].alive).toEqual(false);
+    expect(grid.cells[3][2].alive).toEqual(false);
+
+    expect(grid.cells[0][3].alive).toEqual(false);
+    expect(grid.cells[1][3].alive).toEqual(false);
+    expect(grid.cells[2][3].alive).toEqual(false);
+    expect(grid.cells[3][3].alive).toEqual(false);
+  });
+
+  it('go to next generation on a preset grid', () => {
+    let grid = Grid.from(testData);
+    expect(grid.nextGeneration().cells[0][0].alive).toEqual(false);
+  });
 
 });

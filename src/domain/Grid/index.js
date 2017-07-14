@@ -15,8 +15,8 @@ export default class Grid {
 
   nextGeneration() {
     return new Grid(
-      this.cells.map((column) => {
-        return column.map((cell) => {
+      this.cells.map((row) => {
+        return row.map((cell) => {
           return cell.transform(this.findLivingNeighbors(cell));
         })
       })
@@ -29,11 +29,26 @@ export default class Grid {
     return newGrid;
   }
 
-  static createEmpty(width, height) {
+  static createEmpty(x, y, random = false) {
     return new Grid(
-      new Array(height).fill(undefined).map((columns, y) => {
-        return new Array(width).fill(undefined).map((row, x) => {
-          return new Cell(false, {x: x, y: y})
+      new Array(x).fill(undefined).map((row, xi) => {
+        return new Array(y).fill(undefined).map((column, yi) => {
+          const alive = random ? Math.floor(Math.random() * 10) % 2 === 0: false;
+          return new Cell(alive, {x: yi, y: xi})
+        })
+      })
+    )
+  }
+
+  static createRandom(x, y) {
+    return Grid.createEmpty(x, y, true);
+  }
+
+  static from(preset) {
+    return new Grid(
+      preset.map((row) => {
+        return row.map((cell) => {
+          return Object.assign(new Cell, cell);
         })
       })
     )
