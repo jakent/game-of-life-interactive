@@ -1,6 +1,6 @@
-import Grid from '../';
-import Cell from '../../Cell'
-import testData from './test.json';
+import Grid from '../Grid';
+import Cell from '../Cell'
+import testData from './resources/test.json';
 
 describe('Grid', () => {
 

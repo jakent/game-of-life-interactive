@@ -7,12 +7,16 @@ import './cell.scss'
 export class Cell extends Component {
 
   render() {
-    const {alive, position, changeCellState} = this.props;
+    const {alive, position, changeCellState, generationsAlive} = this.props;
+
+    // const val = 255 / generationsAlive;
+    // const style = {backgroundColor: `rgb(${val}, ${val}, ${val})`};
 
     return <td
       className={`cell ${alive ? 'alive' : 'dead'}`}
+      // style={style}
       onClick={() => changeCellState({alive: !alive, position: position})}>
-      {/*<p>{JSON.stringify(position)}</p>*/}
+      {/*{generationsAlive}*/}
     </td>;
   }
 }
@@ -22,7 +26,8 @@ Cell.defaultProps = {
   position: {
     x: 0,
     y: 0
-  }
+  },
+  generationsAlive: 0
 };
 
 const actions = {changeCellState};

@@ -1,4 +1,4 @@
-import Cell from '../';
+import Cell from '../Cell';
 
 describe('Cell', () => {
 

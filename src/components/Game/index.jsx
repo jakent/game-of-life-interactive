@@ -44,8 +44,9 @@ export class Game extends Component {
         {this.state.running && <button className="control stop" onClick={() => this.stop()}>Stop</button>}
         {this.state.savedCells.length === 0 &&
         <button className="control save" onClick={() => this.save()}>Save</button>}
-        {this.state.savedCells.reverse().map((cells) => <button className="control reset"
-                                                                onClick={() => this.props.reset(cells)}>Reset</button>)}
+        {this.state.savedCells.reverse().map((cells, i) => <button key={i}
+                                                                   className="control reset"
+                                                                   onClick={() => this.props.reset(cells)}>Reset</button>)}
         {/*<input type="range" min="1" max="2000" step ="50" value ="200" onChange={(event) => console.log('adf', event)} />*/}
       </div>
       <div className="full">

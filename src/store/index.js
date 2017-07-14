@@ -23,6 +23,7 @@ const reducer = (state = defaultState, action) => {
     case 'NEXT_GENERATION':
       return Object.assign({}, state, { grid: state.grid.nextGeneration() });
     case 'RESET':
+      console.log(JSON.stringify(action.data));
       return Object.assign({}, state, { grid: new Grid(action.data) });
     default:
       return state;

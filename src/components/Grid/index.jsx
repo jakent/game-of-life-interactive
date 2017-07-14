@@ -16,6 +16,7 @@ class Grid extends Component {
             <Cell key={`x${x}-y${y}`}
                   alive={cell.alive}
                   position={cell.position}
+                  generationsAlive={cell.generationsAlive}
             />
           )}
         </tr>
