@@ -15,12 +15,18 @@ export default class Grid {
 
   nextGeneration() {
     return new Grid(
-      this.cells.map((column, y) => {
-        return column.map((cell, x) => {
+      this.cells.map((column) => {
+        return column.map((cell) => {
           return cell.transform(this.findLivingNeighbors(cell));
         })
       })
     )
+  }
+
+  updateCell(position, alive) {
+    const newGrid = new Grid(this.cells);
+    newGrid.cells[position.y][position.x].alive = alive;
+    return newGrid;
   }
 
   static createEmpty(width, height) {

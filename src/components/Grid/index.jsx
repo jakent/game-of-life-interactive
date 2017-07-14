@@ -8,6 +8,8 @@ class Grid extends Component {
     const {cells} = this.props;
 
     return <table className="grid">
+      <tbody>
+
       {cells.map((row, y) =>
         <tr className={`row y${y}`} key={y}>
           {row.map((cell, x) =>
@@ -18,6 +20,7 @@ class Grid extends Component {
           )}
         </tr>
       )}
+      </tbody>
     </table>;
   }
 }

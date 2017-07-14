@@ -1,5 +1,4 @@
 import {createStore} from 'redux';
-import Cell from '../domain/Cell'
 import Grid from '../domain/Grid'
 
 export const changeCellState = (data) => ({type: 'CHANGE_CELL_STATE', data});
@@ -14,12 +13,8 @@ const defaultState = {
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'CHANGE_CELL_STATE':
-      const position = action.data.position;
-      //ask grid to update
-      const newCells = state.grid.cells.slice();
-      newCells[position.y][position.x] = new Cell(action.data.alive, {x: position.x, y: position.y});
-
-      return Object.assign({}, state, {grid: new Grid(newCells)});
+      const updatedGrid = state.grid.updateCell(action.data.position, action.data.alive);
+      return Object.assign({}, state, {grid: updatedGrid});
     case 'START_GENERATION':
     case 'NEXT_GENERATION':
       return Object.assign({}, state, { grid: state.grid.nextGeneration() });

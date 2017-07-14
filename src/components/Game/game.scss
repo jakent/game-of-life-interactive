@@ -1,38 +1,50 @@
 @import '../_mixins.scss';
 
 body {
-  background-color: black;
+  background-color: antiquewhite;
 }
 
 .controls {
-  height: $cell-height + ($cell-margin--height * 2);
+  padding: 1px;
+  position: fixed;
+  top: 0;
+  background-color: #fffffa;
+  border-bottom: 1px solid antiquewhite;
+  width: 100%;
+  text-align: center;
 
   .control {
-    color: white;
-    border: 0;
+    color: antiquewhite;
     display: inline-block;
-    vertical-align: top;
-    margin: 0 $cell-margin--width;
-    padding: $cell-padding;
-    height: $cell-height;
-    width: $cell-width;
-    border: $cell-border;
+    border: 1px solid antiquewhite;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .2px;
+    line-height: 1.166666;
+    margin: 8px 4px;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    transition: background .2s;
+    min-height: 52px;
+    min-width: 180px;
   }
 
   .start {
-    background-color: palevioletred;
+    background-color: #fffffa;
   }
 
   .stop {
-    background-color: lavender;
+    background-color: ivory;
   }
 
   .save {
-    background-color: purple;
+    background-color: #fffffa;
   }
 
   .reset {
-    background-color: mediumpurple;
+    background-color: floralwhite;
   }
 }
 
