@@ -9,6 +9,8 @@ export const startGeneration = () => ({type: 'START_GENERATION'});
 export const reset = (data) => ({type: 'RESET', data});
 
 const defaultState = {
+  // grid: Grid.createEmpty(75, 75)
+  // grid: Grid.createRandom(75, 75)
   grid: Grid.from(preset)
 };
 
