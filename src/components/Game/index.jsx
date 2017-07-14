@@ -27,7 +27,7 @@ export class Game extends Component {
   start() {
     this.setState({running: true});
     this.props.startGeneration();
-    this.interval = setInterval(this.props.startGeneration, 250);
+    this.interval = setInterval(this.props.startGeneration, 100);
   }
 
   stop() {

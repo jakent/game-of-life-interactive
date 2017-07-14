@@ -4,6 +4,12 @@ import testData from './test.json';
 
 describe('Grid', () => {
 
+  it('find living neighbors', () => {
+    let grid = Grid.createEmpty(4,4);
+
+    expect(grid.findLivingNeighbors(grid.cells[0][0])).toEqual(0);
+  });
+
   it('have no movement when everyone is dead', () => {
     expect(Grid.createEmpty(4,4).nextGeneration()).toEqual(Grid.createEmpty(4,4));
   });

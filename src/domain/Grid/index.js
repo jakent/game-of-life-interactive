@@ -5,19 +5,30 @@ export default class Grid {
     this.cells = cells;
   }
 
-  findLivingNeighbors(cell) {
-    return this.cells
-      .reduce((a, b) => a.concat(b))
-      .filter(c => c.isNear(cell.position))
-      .filter(c => c.alive)
-      .length;
+  findLivingNeighbors({x, y}) {
+    let livingNeighbors = 0;
+
+    const startX = (x-1 < 0) ? x : x-1;
+    const startY = (y-1 < 0) ? y : y-1;
+    const endX = (x+1 > this.cells[0].length-1) ? x : x+1;
+    const endY = (y+1 > this.cells.length-1) ? y : y+1;
+
+    for (let row = startY; row <= endY; row++) {
+      for (let column = startX; column <= endX; column++) {
+        if (column === x && row === y) {
+          continue;
+        }
+        livingNeighbors += this.cells[row][column].alive ? 1 : 0;
+      }
+    }
+    return livingNeighbors;
   }
 
   nextGeneration() {
     return new Grid(
       this.cells.map((row) => {
         return row.map((cell) => {
-          return cell.transform(this.findLivingNeighbors(cell));
+          return cell.transform(this.findLivingNeighbors(cell.position));
         })
       })
     )
