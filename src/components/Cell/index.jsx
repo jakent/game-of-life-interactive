@@ -9,8 +9,8 @@ export class Cell extends Component {
   render() {
     const {alive, position, changeCellState, generationsAlive} = this.props;
 
-    // const val = 255 / generationsAlive;
-    // const style = {backgroundColor: `rgb(${val}, ${val}, ${val})`};
+    const val = 255 / generationsAlive;
+    const style = {backgroundColor: `rgb(${val}, ${val}, ${val})`};
 
     return <td
       className={`cell ${alive ? 'alive' : 'dead'}`}
