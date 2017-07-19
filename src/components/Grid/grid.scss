@@ -1,11 +1,29 @@
 @import '../_mixins.scss';
 
 .row {
-  white-space: nowrap;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100%;
+
+  max-height: $cell-max-height;
+  min-height: $cell-min-height;
 }
 
 .grid {
+  height: 100%;
+  width: 100%;
+
   border-spacing: $cell-padding $cell-padding;
   border-collapse: separate;
   border-color: $background-white;
+
+  tbody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
 }

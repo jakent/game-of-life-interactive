@@ -1,15 +1,12 @@
 @import '../_mixins.scss';
 
 .cell {
-  margin: 0;
+  flex: 1;
   padding: 0;
-  height: $cell-height;
-  max-height: $cell-height;
-  min-height: $cell-height;
-  width: $cell-width;
-  min-width: $cell-width;
-  max-width: $cell-width;
-  border: $cell-border;
+
+  margin: $cell-margin--height $cell-margin--width;
+  max-width: $cell-max-width;
+  min-width: $cell-min-width;
 }
 
 .dead {

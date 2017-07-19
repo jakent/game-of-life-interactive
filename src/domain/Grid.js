@@ -13,6 +13,14 @@ export default class Grid {
     const endX = (x+1 > this.cells[0].length-1) ? x : x+1;
     const endY = (y+1 > this.cells.length-1) ? y : y+1;
 
+    // let xMax = this.cells[0].length-1;
+    // let yMax = this.cells.length-1;
+    //
+    // const startX = (x-1 < 0) ? xMax : x-1;
+    // const startY = (y-1 < 0) ? yMax : y-1;
+    // const endX = x+1 % xMax;
+    // const endY = y+1 % yMax;
+
     for (let row = startY; row <= endY; row++) {
       for (let column = startX; column <= endX; column++) {
         if (column === x && row === y) {
@@ -42,10 +50,10 @@ export default class Grid {
 
   static createEmpty(x, y, random = false) {
     return new Grid(
-      new Array(x).fill(undefined).map((row, xi) => {
-        return new Array(y).fill(undefined).map((column, yi) => {
+      new Array(x).fill(undefined).map((row, yi) => {
+        return new Array(y).fill(undefined).map((column, xi) => {
           const alive = random ? Math.floor(Math.random() * 10) % 2 === 0: false;
-          return new Cell(alive, {x: yi, y: xi})
+          return new Cell(alive, {x: xi, y: yi})
         })
       })
     )
