@@ -36,7 +36,7 @@ export class Game extends Component {
   }
 
   render() {
-    const {grid} = this.props;
+    const {grid, iterations} = this.props;
 
     return <section className="game">
       <div className="controls">
@@ -48,6 +48,7 @@ export class Game extends Component {
         {this.state.savedCells.reverse().map((cells, i) => <button key={i}
                                                                    className="control reset"
                                                                    onClick={() => this.props.reset(cells)}>Reset</button>)}
+        iterations: {iterations}
         {/*<input type="range" min="1" max="2000" step ="50" value ="200" onChange={(event) => console.log('adf', event)} />*/}
       </div>
       <div className="full">
@@ -59,7 +60,8 @@ export class Game extends Component {
 
 const mapStateToProps = (store) => {
   return {
-    grid: store.grid
+    grid: store.grid,
+    iterations: store.iterations
   }
 };
 const mapDispatchToProps = {nextGeneration, startGeneration, reset};

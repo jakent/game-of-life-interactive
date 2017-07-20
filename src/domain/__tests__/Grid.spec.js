@@ -27,10 +27,10 @@ describe('Grid', () => {
       [new Cell(true, {x: 0, y: 0}), new Cell(true, {x: 1, y: 0})],
       [new Cell(true, {x: 0, y: 1}), new Cell(false, {x: 1, y: 1})]
     ]);
-    expect(grid.nextGeneration()).toEqual(new Grid([
+    expect(grid.nextGeneration().cells.map(strip)).toEqual(new Grid([
       [new Cell(true, {x: 0, y: 0}), new Cell(true, {x: 1, y: 0})],
       [new Cell(true, {x: 0, y: 1}), new Cell(true, {x: 1, y: 1})]
-    ]));
+    ]).cells.map(strip));
   });
 
   it('kill all but corners', () => {
@@ -38,10 +38,10 @@ describe('Grid', () => {
       [new Cell(true, {x: 0, y: 0}), new Cell(true, {x: 1, y: 0}), new Cell(true, {x: 2, y: 0})],
       [new Cell(true, {x: 0, y: 1}), new Cell(true, {x: 1, y: 1}), new Cell(true, {x: 2, y: 1})]
     ]);
-    expect(grid.nextGeneration()).toEqual(new Grid([
+    expect(grid.nextGeneration().cells.map(strip)).toEqual(new Grid([
       [new Cell(true, {x: 0, y: 0}), new Cell(false, {x: 1, y: 0}), new Cell(true, {x: 2, y: 0})],
       [new Cell(true, {x: 0, y: 1}), new Cell(false, {x: 1, y: 1}), new Cell(true, {x: 2, y: 1})]
-    ]));
+    ]).cells.map(strip));
   });
 
   it('update a cell', () => {
@@ -80,5 +80,7 @@ describe('Grid', () => {
     let grid = Grid.from(testData);
     expect(grid.nextGeneration().cells[0][0].alive).toEqual(false);
   });
+
+  const strip = (cell) => ({alive: cell.alive, position: cell.position})
 
 });

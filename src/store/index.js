@@ -9,9 +9,10 @@ export const startGeneration = () => ({type: 'START_GENERATION'});
 export const reset = (data) => ({type: 'RESET', data});
 
 const defaultState = {
-  grid: Grid.createEmpty(20, 20)
-  // grid: Grid.createRandom(20, 20)
-  // grid: Grid.from(preset)
+  grid: Grid.createEmpty(10, 10),
+  // grid: Grid.createRandom(20, 20),
+  // grid: Grid.from(preset),
+  iterations: 0
 };
 
 const reducer = (state = defaultState, action) => {
@@ -21,10 +22,10 @@ const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {grid: updatedGrid});
     case 'START_GENERATION':
     case 'NEXT_GENERATION':
-      return Object.assign({}, state, { grid: state.grid.nextGeneration() });
+      return Object.assign({}, state, { grid: state.grid.nextGeneration(true), iterations: state.iterations + 1 });
     case 'RESET':
       console.log(JSON.stringify(action.data));
-      return Object.assign({}, state, { grid: new Grid(action.data) });
+      return Object.assign({}, state, { grid: new Grid(action.data), iterations: 0 });
     default:
       return state;
   }

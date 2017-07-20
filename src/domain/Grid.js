@@ -24,7 +24,7 @@ export default class Grid {
     return livingNeighbors;
   }
 
-  findLivingNeighbors2({x, y}) {
+  findToroidalNeighbors({x, y}) {
     let livingNeighbors = 0;
 
     let xMax = this.cells[0].length;
@@ -47,11 +47,13 @@ export default class Grid {
     return livingNeighbors;
   }
 
-  nextGeneration() {
+  nextGeneration(toroidal = false) {
+    const neighborFunction = (pos) => toroidal ? this.findToroidalNeighbors(pos) : this.findLivingNeighbors(pos);
+
     return new Grid(
       this.cells.map((row) => {
         return row.map((cell) => {
-          return cell.transform(this.findLivingNeighbors2(cell.position));
+          return cell.transform(neighborFunction(cell.position));
         })
       })
     )

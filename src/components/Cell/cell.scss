@@ -1,12 +1,25 @@
 @import '../_mixins.scss';
 
 .cell {
-  flex: 1;
-  padding: 0;
+  border: $cell-margin--height solid $background-black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  flex: 1 0 0;
+  min-width: 1.5em;
+  max-width: 3em;
+}
+.cell:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+  float: left;
+}
 
-  margin: $cell-margin--height $cell-margin--width;
-  max-width: $cell-max-width;
-  min-width: $cell-min-width;
+.cell:hover {
+  transition: all .2s ease-in-out;
+  transform: scale(1.1);
 }
 
 .dead {

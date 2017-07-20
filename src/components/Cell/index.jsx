@@ -12,12 +12,12 @@ export class Cell extends Component {
     const val = 255 / generationsAlive;
     const style = {backgroundColor: `rgb(${val}, ${val}, ${val})`};
 
-    return <td
+    return <div
       className={`cell ${alive ? 'alive' : 'dead'}`}
       // style={style}
       onClick={() => changeCellState({alive: !alive, position: position})}>
       {/*{generationsAlive}*/}
-    </td>;
+    </div>;
   }
 }
 
