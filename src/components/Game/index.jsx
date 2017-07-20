@@ -40,6 +40,7 @@ export class Game extends Component {
 
     return <section className="game">
       <div className="controls">
+        <button className="control start" onClick={this.props.nextGeneration}>Next</button>
         {!this.state.running && <button className="control start" onClick={() => this.start()}>Start</button>}
         {this.state.running && <button className="control stop" onClick={() => this.stop()}>Stop</button>}
         {this.state.savedCells.length === 0 &&
