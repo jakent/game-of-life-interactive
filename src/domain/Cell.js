@@ -1,6 +1,6 @@
 
 export default class Cell {
-  constructor(alive, position, generationsAlive = 0) {
+  constructor(alive, position, generationsAlive = alive ? 1 : 0) {
     this.alive = alive;
     this.position = position;
     this.generationsAlive = generationsAlive;
@@ -12,10 +12,10 @@ export default class Cell {
     else if (aliveNeighbors >= 4) survive = false;
     else if (aliveNeighbors <= 1) survive = false;
 
-    let howlong = this.generationsAlive;
-    if (survive) howlong += 1;
+    let howLong = this.generationsAlive;
+    if (survive) howLong += 1;
 
-    return new Cell(survive, this.position, howlong)
+    return new Cell(survive, this.position, howLong)
   }
 
   isNear(otherPosition) {

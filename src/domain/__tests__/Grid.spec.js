@@ -10,8 +10,15 @@ describe('Grid', () => {
     expect(grid.findLivingNeighbors(grid.cells[0][0])).toEqual(0);
   });
 
+  it('should export cell data', () => {
+    expect(Grid.createEmpty(2,2).exportData()).toEqual([
+      [false, false],
+      [false, false]
+    ]);
+  });
+
   it('have no movement when everyone is dead', () => {
-    expect(Grid.createEmpty(4,4).nextGeneration()).toEqual(Grid.createEmpty(4,4));
+    expect(Grid.createEmpty(4,4).nextGeneration().exportData()).toEqual(Grid.createEmpty(4,4).exportData());
   });
 
   it('kill living cell when it has no living neighbours', () => {
@@ -19,7 +26,7 @@ describe('Grid', () => {
       [new Cell(true, {x: 0, y: 0}), new Cell(false, {x: 1, y: 0})],
       [new Cell(false, {x: 0, y: 1}), new Cell(false, {x: 1, y: 1})]
     ]);
-    expect(grid.nextGeneration()).toEqual(Grid.createEmpty(2,2));
+    expect(grid.nextGeneration().exportData()).toEqual(Grid.createEmpty(2,2).exportData());
   });
 
   it('revive a dead cell when it has three living neighbours', () => {
@@ -27,10 +34,10 @@ describe('Grid', () => {
       [new Cell(true, {x: 0, y: 0}), new Cell(true, {x: 1, y: 0})],
       [new Cell(true, {x: 0, y: 1}), new Cell(false, {x: 1, y: 1})]
     ]);
-    expect(grid.nextGeneration().cells.map(strip)).toEqual(new Grid([
+    expect(grid.nextGeneration().exportData()).toEqual(new Grid([
       [new Cell(true, {x: 0, y: 0}), new Cell(true, {x: 1, y: 0})],
       [new Cell(true, {x: 0, y: 1}), new Cell(true, {x: 1, y: 1})]
-    ]).cells.map(strip));
+    ]).exportData());
   });
 
   it('kill all but corners', () => {
@@ -38,19 +45,19 @@ describe('Grid', () => {
       [new Cell(true, {x: 0, y: 0}), new Cell(true, {x: 1, y: 0}), new Cell(true, {x: 2, y: 0})],
       [new Cell(true, {x: 0, y: 1}), new Cell(true, {x: 1, y: 1}), new Cell(true, {x: 2, y: 1})]
     ]);
-    expect(grid.nextGeneration().cells.map(strip)).toEqual(new Grid([
+    expect(grid.nextGeneration().exportData()).toEqual(new Grid([
       [new Cell(true, {x: 0, y: 0}), new Cell(false, {x: 1, y: 0}), new Cell(true, {x: 2, y: 0})],
       [new Cell(true, {x: 0, y: 1}), new Cell(false, {x: 1, y: 1}), new Cell(true, {x: 2, y: 1})]
-    ]).cells.map(strip));
+    ]).exportData());
   });
 
   it('update a cell', () => {
     let grid = Grid.createEmpty(2, 2);
     grid.updateCell({x: 0, y: 0}, true);
-    expect(grid).toEqual(new Grid([
+    expect(grid.exportData()).toEqual(new Grid([
       [new Cell(true, {x: 0, y: 0}), new Cell(false, {x: 1, y: 0})],
       [new Cell(false, {x: 0, y: 1}), new Cell(false, {x: 1, y: 1})]
-    ]));
+    ]).exportData());
   });
 
   it('create a preset grid', () => {
@@ -80,7 +87,5 @@ describe('Grid', () => {
     let grid = Grid.from(testData);
     expect(grid.nextGeneration().cells[0][0].alive).toEqual(false);
   });
-
-  const strip = (cell) => ({alive: cell.alive, position: cell.position})
 
 });

@@ -16,6 +16,12 @@ export class Game extends Component {
       this.stop();
   }
 
+  componentDidUpdate() {
+    if (this.state.running && this.props.stable) {
+      this.stop();
+    }
+  }
+
   save() {
     this.setState((prevState, props) => {
       const newSavedCells = prevState.savedCells.slice();
@@ -61,7 +67,8 @@ export class Game extends Component {
 const mapStateToProps = (store) => {
   return {
     grid: store.grid,
-    iterations: store.iterations
+    iterations: store.iterations,
+    stable: store.stable
   }
 };
 const mapDispatchToProps = {nextGeneration, startGeneration, reset};

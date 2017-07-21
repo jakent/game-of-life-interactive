@@ -61,8 +61,18 @@ export default class Grid {
 
   updateCell(position, alive) {
     const newGrid = new Grid(this.cells);
-    newGrid.cells[position.y][position.x].alive = alive;
+    let changingCell = newGrid.cells[position.y][position.x];
+    changingCell.alive = alive;
+    changingCell.generationsAlive += 1;
     return newGrid;
+  }
+
+  exportData() {
+    return this.cells.map((row) => {
+      return row.map((cell) => {
+        return cell.alive;
+      })
+    })
   }
 
   static createEmpty(x, y, random = false) {

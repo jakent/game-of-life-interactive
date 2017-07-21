@@ -16,7 +16,7 @@ export class Cell extends Component {
       className={`cell ${alive ? 'alive' : 'dead'}`}
       // style={style}
       onClick={() => changeCellState({alive: !alive, position: position})}>
-      {/*{generationsAlive}*/}
+      {generationsAlive}
     </div>;
   }
 }
