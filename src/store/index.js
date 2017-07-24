@@ -9,6 +9,7 @@ export const startGeneration = () => ({type: 'START_GENERATION'});
 export const reset = (data) => ({type: 'RESET', data});
 export const changeGridSize = (data) => ({type: 'CHANGE_GRID_SIZE', data});
 export const clearGrid = (random) => ({type: 'CLEAR_GRID', random});
+export const submit = () => ({type: 'SUBMIT'});
 
 export const defaultState = {
   // grid: Grid.createEmpty(5, 5),
@@ -16,7 +17,8 @@ export const defaultState = {
   // grid: Grid.from(preset),
   history: [Grid.createEmpty(10, 10).exportData()],
   iterations: 0,
-  stable: false
+  stable: false,
+  game: 'Create a still life'
 };
 
 export const reducer = (state = defaultState, action) => {
@@ -36,8 +38,11 @@ export const reducer = (state = defaultState, action) => {
       const updatedGrid = state.grid.updateCell(action.data.position, action.data.alive);
       return Object.assign({}, state, {grid: updatedGrid, history: [updatedGrid.exportData()], stable: false});
     }
+    case 'SUBMIT':
     case 'START_GENERATION':
     case 'NEXT_GENERATION': {
+      console.log('action.type', action.type)
+
       const nextGeneration = state.grid.nextGeneration(true);
       const nextGenerationData = nextGeneration.exportData();
 
@@ -50,7 +55,8 @@ export const reducer = (state = defaultState, action) => {
         grid: state.grid.nextGeneration(true),
         iterations: state.iterations + 1,
         stable: stable,
-        history: newHistory
+        history: newHistory,
+        game: stable ? 'congratulations!' : 'Nope, not exactly what we are looking for'
       });
     }
     case 'RESET':

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {nextGeneration, startGeneration, reset, clearGrid} from '../../store'
+import {nextGeneration, startGeneration, reset, clearGrid, submit} from '../../store'
 
 import './controls.scss'
 
@@ -46,7 +46,7 @@ export class Controls extends Component {
   }
 
   render() {
-    const {iterations, stable} = this.props;
+    const {iterations, stable, submit} = this.props;
 
     return (
       <div className="controls">
@@ -99,5 +99,5 @@ const mapStateToProps = (store) => {
     stable: store.stable
   }
 };
-const mapDispatchToProps = {nextGeneration, startGeneration, reset, clearGrid};
+const mapDispatchToProps = {nextGeneration, startGeneration, reset, clearGrid, submit};
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);
