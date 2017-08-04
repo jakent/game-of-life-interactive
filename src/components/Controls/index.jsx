@@ -31,7 +31,7 @@ export class Controls extends Component {
 
   start() {
     this.setState({running: true});
-    this.props.startGeneration();
+    this.props.startGeneration(this.props.stable);
     this.interval = setInterval(this.props.startGeneration, 100);
   }
 
@@ -85,9 +85,10 @@ export class Controls extends Component {
           <button className="control clear" onClick={() => this.clear(false)}>Clear</button>
         </div>
 
-        <div className="flex1" />
+        <div className="flex1" >
 
-        {/*<input type="range" min="1" max="2000" step ="50" value ="200" onChange={(event) => console.log('adf', event)} />*/}
+        {/*<input type="range" min="1" max="2000" step="50" value="200" onChange={(event) => console.log('adf', event)} />*/}
+      </div>
       </div>
     );
   }

@@ -10,11 +10,13 @@ export const reset = (data) => ({type: 'RESET', data});
 export const changeGridSize = (data) => ({type: 'CHANGE_GRID_SIZE', data});
 export const clearGrid = (random) => ({type: 'CLEAR_GRID', random});
 
+const size = 100;
+
 export const defaultState = {
-  // grid: Grid.createEmpty(5, 5),
-  grid: Grid.createRandom(10, 10),
+  grid: Grid.createEmpty(size, size),
+  // grid: Grid.createRandom(75, 75),
   // grid: Grid.from(preset),
-  history: [Grid.createEmpty(10, 10).exportData()],
+  history: [Grid.createEmpty(size, size).exportData()],
   iterations: 0,
   stable: false
 };
@@ -28,7 +30,7 @@ export const reducer = (state = defaultState, action) => {
     }
     case 'CLEAR_GRID': {
       //add test about resetting iterations
-      const newGrid = action.random ? Grid.createRandom(10, 10) : Grid.createEmpty(10, 10);
+      const newGrid = action.random ? Grid.createRandom(size, size) : Grid.createEmpty(size, size);
       return Object.assign({}, state, {grid: newGrid, history: [newGrid.exportData()], iterations: 0});
     }
     case 'CHANGE_CELL_STATE': {
@@ -47,7 +49,7 @@ export const reducer = (state = defaultState, action) => {
       const stable = repeated(nextGenerationData, state.history);
 
       return Object.assign({}, state, {
-        grid: state.grid.nextGeneration(true),
+        grid: nextGeneration,
         iterations: state.iterations + 1,
         stable: stable,
         history: newHistory
