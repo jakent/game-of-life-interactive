@@ -8,14 +8,14 @@ describe('<Cell />', () => {
 
   it('should be DEAD', () => {
     const cell = shallow(<Cell alive={false}/>);
-    expect(cell.hasClass('dead')).toBe(true);
-    expect(cell.hasClass('alive')).toBeFalsy();
+    expect(cell.find('span').hasClass('dead')).toBe(true);
+    expect(cell.find('span').hasClass('alive')).toBeFalsy();
   });
 
   it('should be ALIVE', () => {
     const cell = shallow(<Cell alive={true}/>);
-    expect(cell.hasClass('alive')).toBeTruthy();
-    expect(cell.hasClass('dead')).toBeFalsy();
+    expect(cell.find('span').hasClass('alive')).toBeTruthy();
+    expect(cell.find('span').hasClass('dead')).toBeFalsy();
   });
 
   xit('should change from DEAD to ALIVE on click', () => {

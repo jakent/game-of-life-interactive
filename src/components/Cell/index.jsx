@@ -13,10 +13,11 @@ export class Cell extends Component {
     const style = {backgroundColor: `rgb(${val}, ${val}, ${val})`};
 
     return <div
-      className={`cell ${alive ? 'alive' : 'dead'}`}
+      className="cell"
       // style={style}
       onClick={() => changeCellState({alive: !alive, position: position})}>
       {/*{generationsAlive}*/}
+      <span className={`cell__inner ${alive ? 'alive' : 'dead'}`} />
     </div>;
   }
 }

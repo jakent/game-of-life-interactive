@@ -10,7 +10,7 @@ export const reset = (data) => ({type: 'RESET', data});
 export const changeGridSize = (data) => ({type: 'CHANGE_GRID_SIZE', data});
 export const clearGrid = (random) => ({type: 'CLEAR_GRID', random});
 
-const size = 100;
+const size = 50;
 
 export const defaultState = {
   grid: Grid.createEmpty(size, size),
