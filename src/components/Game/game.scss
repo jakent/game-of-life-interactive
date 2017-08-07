@@ -26,6 +26,10 @@ html, body {
   }
 
   .scrollable-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     flex: 8;
     overflow-y: scroll
   }

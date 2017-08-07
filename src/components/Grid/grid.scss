@@ -2,6 +2,7 @@
 
 .grid {
   height: 100%;
+  flex-grow: 1;
 
   display: flex;
   justify-content: center;
@@ -12,7 +13,7 @@
 
 .centered {
   flex: 1;
-  max-width: 93vh;
+  max-width: 90vh;
 }
 
 .row {
